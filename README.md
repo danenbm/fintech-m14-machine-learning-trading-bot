@@ -3,7 +3,7 @@
 This Jupyter notebook creates, trains, and evaluates machine learning models to automate trading decisions for emerging markets investing.
 
 Specifically, it carries out the following steps:
-1. Implements a baseline trading strategy based on dual Simple Moving Averages (SMAs) using the Support Vector Machine (SVM) SVC model.
+1. Implements a baseline trading strategy based on dual Simple Moving Averages (SMAs) using the Support Vector Machine (SVM) C-Support Vector Classification (SVC) model.
 2. Adjusts the training data size and the moving average windows to optimize the algorithm. 
 3. Trains a model using a different machine learning model and compares its performance to the baseline model.
 
@@ -110,7 +110,7 @@ weighted avg       0.51      0.49      0.49      3943
 
 ![Emerging Markets - Dual SMA Machine Learning Strategy - DecisionTreeClassifier](Images/dual_sma_strategy_dtc.png)
 
-The new model built using a DecisionTreeClassifer performed worse than the baseline model and the 6-Month Trained SVC model.  It performed slightly better than the SMA Window Tuned SVC model, although that is not a fair comparison because the new model was also built using 6 months of training data.
+The new model built using a DecisionTreeClassifer performed worse than the baseline model and the 6-month Trained SVC model.  It performed slightly better than the SMA Window Tuned SVC model, although that is not a fair comparison because the new model was also built using 6 months of training data.
 
 Compared to the baseline, the accuracy went down to 49%, the Strategy Cumulative Returns went down to 121.8%, and the Actual Cumulative Returns of the emerging markets data went up to 156.6%.
 
