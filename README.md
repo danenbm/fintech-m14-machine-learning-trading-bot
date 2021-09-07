@@ -54,7 +54,7 @@ weighted avg       0.50      0.55      0.43      4092
 
 The baseline model had an accuracy of 55%.  The Strategy Cumulative Returns were 151.8%, and the Actual Cumulative Returns of the emerging markets data were 138.7%.  So for the baseline case, the model performed 13.1% better than the underlying assets.
 
-### 6-month Trained model
+### 6-month Trained SVC model
 
 #### Classification Report
 ```
@@ -71,9 +71,9 @@ weighted avg       0.51      0.56      0.42      3943
 
 When the model was trained with 6 months of data instead of 3, overall the model performed better than the baseline.  The accuracy went up to 56%, the Strategy Cumulative Returns went up to 184.2%, and the Actual Cumulative Returns of the emerging markets data went up to 156.0%.  Note there was a period about 1 year where the model performed worse than the underlying assets, but in the end the model performed 28.2% better than the underlying assets.
 
-Note the reason the Actual Cumulative Returns went up compared to the baseline was because the 6 months of training data changed the amount of data available used by the cumulative product comparison.
+Also note the reason the Actual Cumulative Returns went up compared to the baseline was because the 6 months of training data changed the amount of data available used by the cumulative product comparison.
 
-### SMA Window Tuned Model
+### SMA Window Tuned SVC Model
 
 #### Classification Report
 ```
@@ -90,11 +90,37 @@ weighted avg       0.52      0.47      0.40      3967
 
 ![Emerging Markets - Dual SMA Machine Learning Strategy - 4/200 Window](Images/dual_sma_strategy_4_200.png)
 
-When the SMA fast/slow windows were changed from 4/100 days to 4/200 days, it had a negative impact on the model.  The accuracy went down to 47%, the Strategy Cumulative Returns went down to 96.6%, and the Actual Cumulative Returns of the emerging markets data went up to 156.6%.
+When the SMA fast/slow windows were changed from 4/100 days to 4/200 days, it had a negative impact on the model.  Compared to the baseline, the accuracy went down to 47%, the Strategy Cumulative Returns went down to 96.6%, and the Actual Cumulative Returns of the emerging markets data went up to 156.6%.
 
 Note the reason the Actual Cumulative Returns went up compared to the baseline was because the 200-day window changed the amount of data available used by the cumulative product comparison.
 
+### DecisionTreeClassifier Model
+
+#### Classification Report
+```
+              precision    recall  f1-score   support
+
+        -1.0       0.44      0.57      0.50      1732
+         1.0       0.56      0.44      0.49      2211
+
+    accuracy                           0.49      3943
+   macro avg       0.50      0.50      0.49      3943
+weighted avg       0.51      0.49      0.49      3943
+```
+
+![Emerging Markets - Dual SMA Machine Learning Strategy - DecisionTreeClassifier](Images/dual_sma_strategy_dtc.png)
+
+The new model built using a DecisionTreeClassifer performed worse than the baseline model and the 6-Month Trained SVC model.  It performed slightly better than the SMA Window Tuned SVC model, although that is not a fair comparison because the new model was also built using 6 months of training data.
+
+Compared to the baseline, the accuracy went down to 49%, the Strategy Cumulative Returns went down to 121.8%, and the Actual Cumulative Returns of the emerging markets data went up to 156.6%.
+
+Note the reason the Actual Cumulative Returns went up compared to the baseline was because the 6 months of training data changed the amount of data available used by the cumulative product comparison.
+
 ## Conclusion
+
+Based on the overall model accuracy and the comparison of Strategy Cumulative Returns with Actual Cumulative Returns of the emerging markets data, the recommended machine learning model is the 6-month Trained SVC model.
+
+When backtested, this model produced cumulative returns of 184.2%, compared to cumulative returns of 156.0% of the underlying emerging markets assets.
 
 ---
 
